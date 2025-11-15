@@ -103,11 +103,30 @@ def menu_atualizar_item():
         print("Entrada inválida (código, preço ou estoque).")
 
 # --- Funções de Interface (Menu Pedidos) ---
+from gerenciador_pedidos import criar_pedido
+from gerenciador_pedidos import processar_pedidos_pendentes
+from gerenciador_pedidos import menu_consultar_pedidos
 
-def menu_criar_pedido():
-    """Interface para criar um novo pedido."""
-    limpar_tela()
-    menu_consultar_itens() # Mostra o cardápio
-    print("\n--- Criar Novo Pedido ---")
-    
-    itens_pedido = [] # Lista de tuplas
+while True:
+        print("\n--- MENU PRINCIPAL ---")
+        print("1 - Listar cardápio")
+        print("2 - Criar pedido")
+        print("3 - Processar pedidos pendentes")
+        print("4 - Consultar pedidos")
+        print("0 - Sair")
+
+        escolha = input("Escolha uma opção: ").strip()
+
+        if escolha == "1":
+            menu_consultar_itens()  
+        elif escolha == "2":
+            criar_pedido()  
+        elif escolha == "3":
+            processar_pedidos_pendentes()
+        elif escolha == "4":
+            menu_consultar_pedidos()
+        elif escolha == "0":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida!")
