@@ -3,6 +3,8 @@
 # Importa os módulos criados
 import utils
 import gerenciador_menu
+from gerenciador_menu import menu_gerenciador_menu
+from gerenciador_menu import listar_itens
 import gerenciador_pedidos
 import os
 
@@ -113,18 +115,21 @@ while True:
         print("2 - Criar pedido")
         print("3 - Processar pedidos pendentes")
         print("4 - Consultar pedidos")
+        print('5 - Acessar menu de itens')
         print("0 - Sair")
 
         escolha = input("Escolha uma opção: ").strip()
 
         if escolha == "1":
-            menu_consultar_itens()  
+            listar_itens()  
         elif escolha == "2":
             criar_pedido()  
         elif escolha == "3":
             processar_pedidos_pendentes()
         elif escolha == "4":
             menu_consultar_pedidos()
+        elif escolha == "5":
+            menu_gerenciador_menu()
         elif escolha == "0":
             print("Saindo...")
             break

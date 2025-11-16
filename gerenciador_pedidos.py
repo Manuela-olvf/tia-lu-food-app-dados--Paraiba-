@@ -1,8 +1,8 @@
 from indexador_avl import ArvoreAvl
+from gerenciador_menu import arvore_itens
 from ordenacao import bucket_sort
 import utils
 import gerenciador_menu
-from gerenciador_menu import buscar_item_por_codigo
 
 # Status
 STATUS_AGUARDANDO = "AGUARDANDO_APROVACAO"
@@ -49,7 +49,11 @@ def _salvar():
 
 # Busca o código do item direto no gerenciador_menu
 def _buscar_item_por_codigo(codigo):
-    return buscar_item_por_codigo(codigo)
+    item = arvore_itens.buscar(codigo)
+
+    if not item:
+        print("Item não encontrado!")
+        return
 
 # Retorna o próximo código baseado na maior chave da AVL.
 def _proximo_codigo():

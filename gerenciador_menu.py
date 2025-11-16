@@ -1,12 +1,12 @@
 from utils import carregar_dados, salvar_dados
 from ordenacao import bucket_sort
-from indexador_avl import AVLTree
+from indexador_avl import ArvoreAvl
 dados = carregar_dados()
 #Criamos a árvore AVL que vai armazenar os itens
 # Isso permite busca mais rápida pelo código do item.
-arvore_itens = AVLTree()
+arvore_itens = ArvoreAvl()
 for item in dados["itens"]:
-    arvore_itens.insert(item["codigo"], item)
+    arvore_itens.inserir(item["codigo"], item)
 
 # A função a seguir cria um novo item no menu e salva no JSON + AVL
 
@@ -33,7 +33,7 @@ def registrar_item():
     dados["itens"].append(item)
 
     # Inserimos o item na árvore AVL
-    arvore_itens.insert(codigo, item)
+    arvore_itens.inserir(codigo, item)
 
     # Salvamos tudo no JSON para persistência permanente
     salvar_dados(dados)
@@ -61,7 +61,7 @@ def atualizar_item():
     codigo = int(input("Informe o código do item: "))
 
     # Busca rápida usando AVL
-    item = arvore_itens.search(codigo)
+    item = arvore_itens.buscar(codigo)
 
     if not item:
         print("Item não encontrado!")
